@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "slug": "this-blog-architecture",
+    "published": true,
+    "filename": "BlogMajor",
+    "type": "major",
+    "tldr": "First major project I tackle is creating this blog.",
+    "title": "Blog's Architecture",
+    "timestamp": 1544450983
+  },
+  {
+    "id": 2,
+    "slug": "about-me",
+    "published": false,
+    "filename": "AboutMe",
+    "type": "casual",
+    "tldr": "Introduction to me.",
+    "title": "About Me",
+    "timestamp": 1544450983
+  },
+  {
+    "id": 3,
+    "slug": "about-blog",
+    "published": true,
+    "filename": "AboutBlog",
+    "type": "casual",
+    "tldr": "Why I'm writing this blog and what's TECH, CASUAL and MAJOR",
+    "title": "About this Blog",
+    "timestamp": 1544450983
+  },
+  {
+    "id": 4,
+    "slug": "blog-development-live-preview",
+    "published": true,
+    "filename": "LivePreviewBlogChanges",
+    "type": "tech",
+    "tldr": "Adding live preview of changes when I'm writing the blog.",
+    "title": "Live Preview Blog Edits",
+    "timestamp": 1544608657
+  }
+]
