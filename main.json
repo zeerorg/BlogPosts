@@ -22,7 +22,7 @@
   {
     "id": 3,
     "slug": "about-blog",
-    "published": true,
+    "published": false,
     "filename": "AboutBlog",
     "type": "casual",
     "tldr": "Why I'm writing this blog and what's TECH, CASUAL and MAJOR",
