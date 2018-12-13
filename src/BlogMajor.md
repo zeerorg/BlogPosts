@@ -6,7 +6,7 @@ This is my first blog on how I'm creating this blog. I've started writing this b
 
 ## Block diagrams ftw
 
-![Architecture Diagram](http://localhost:8080/Photos/blog-architecture.png)
+![Architecture Diagram](https://zeerorgprocessedblog.blob.core.windows.net/photos/blog-architecture.png)
 
 ## Requirements (or maybe restrictions)
 
