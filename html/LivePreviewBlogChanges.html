@@ -1,14 +1,14 @@
 <h1>Live Preview Blog Edits</h1>
-<p><em>This post is continuation to my major project on this blog.</em></p>
-<p>The original requirements didn't consider live preview as an option. Seems like I was wrong, live preview would help me see the current changes inside the window. This also gives me the flexibility to see my changes and gives me more confidence in what I'm writing. A lot of these changes are not compatible with what I see in my editor markdown preview because I'm using a custom CSS for posts.</p>
+<p><em>This post is a continuation of my major project on this blog.</em></p>
+<p>The original requirements didn't consider live preview as an option. Seems like I was wrong, the live preview would help me see the current changes inside the window. This also gives me the flexibility to see my changes and gives me more confidence in what I'm writing. A lot of these changes are not compatible with what I see in my editor markdown preview because I'm using a custom CSS for posts.</p>
 <p>Adding live preview involves changes in the frontend and a test backend. One option I considered was:</p>
-<p><strong>Uploading directly to Azure storage.</strong> This would be great since I won't have to change much in the backend and could levarage what I've built till now. But life ain't that easy, uploading to the backend takes some time and the azure blob trigger can take upto 10 minutes to run 😲!! This solution was obviously not viable, I cannot escape this ordeal easily.</p>
+<p><strong>Uploading directly to Azure storage.</strong> This would be great since I won't have to change much in the backend and could leverage what I've built till now. But life ain't that easy, uploading to the backend takes some time and the azure blob trigger can take up to 10 minutes to run 😲!! This solution was obviously not viable, I cannot escape this ordeal easily.</p>
 <h2>Test Backend</h2>
 <p>I reluctantly start with building a backend. The good part is that laying out a simple blog architecture makes this process much easier. If I could find a way to provide the current draft as an input to the frontend I could preview the changes in my local machine. This proved to be a relatively easy problem to tackle.</p>
-<p>For backend, I run an http based file server to emulate my blob storage use. I use nodejs-based <a href="https://www.npmjs.com/package/http-server" title="Http server npm page">http-server</a>.</p>
-<p>For frontend, I check if the <code>process.env.NODE_ENV</code> environment is set to <code>&quot;development&quot;</code> and point to the local server.</p>
+<p>For the backend, I run an HTTP based file server to emulate my blob storage use. I use nodejs-based <a href="https://www.npmjs.com/package/http-server" title="Http server npm page">http-server</a>.</p>
+<p>For the frontend, I check if the <code>process.env.NODE_ENV</code> environment is set to <code>&quot;development&quot;</code> and point to the local server.</p>
 <h2>Building markdown on change</h2>
-<p>My azure function backend uses <a href="https://github.com/lunet-io/markdig" title="Markdig github page">Markdig</a> to compile markdown to html. I has a test project from few days before, that used Markdig to compile markdown, I picked it up to repurpose it for building the markdown files on change. I implemented a simple file watcher and compiled the files that changed to markdown. I'll link down the code.</p>
+<p>My azure function backend uses <a href="https://github.com/lunet-io/markdig" title="Markdig github page">Markdig</a> to compile markdown to HTML. I have a test project from few days before, that used Markdig to compile markdown, I picked it up to repurpose it for building the markdown files on change. I implemented a simple file watcher and compiled the files that changed to markdown. I'll link down the code.</p>
 <h2>What I learned</h2>
 <p>C# <a href="https://docs.microsoft.com/en-us/dotnet/api/system.io.filesystemwatcher?view=netcore-2.1" title="C# file system watcher api">FileSystemWatcher</a> was pretty easy to implement. I also learned about the <code>process.env.NODE_ENV</code> variable in React.</p>
 <h2>Code links</h2>

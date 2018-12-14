@@ -6,6 +6,7 @@ This is my first blog on how I'm creating this blog. I've started writing this b
 
 ## Block diagrams ftw
 
+A simple block diagram for the overall architecture.
 ![Architecture Diagram](https://zeerorgprocessedblog.blob.core.windows.net/photos/blog-architecture.png)
 
 ## Requirements (or maybe restrictions)
@@ -18,9 +19,9 @@ Every project needs some requirements so I should underline those for this blog.
 
 ---
 
-## Features
+## Going about it
 
-This is a list of features. This is what I actually decided to do.
+This is why and what I decided.
 
 1. **Storing in Azure blobs**. This is going to be the place for storing original blog markdown files. This keeps a backup and also creates a destination for original source files.  
 2. **Stored files are automatically processed when uploaded**. I set this up and the files are processed without my interaction. These processed files are used by the backend to answer requests.  
