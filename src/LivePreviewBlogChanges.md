@@ -1,6 +1,6 @@
 # Live Preview Blog Edits
 
-_This post is a continuation of my major project on this blog._
+_This is 2nd post in continuation to my major project on this blog._
 
 The original requirements didn't consider live preview as an option. Seems like I was wrong, the live preview would help me see the current changes inside the window. This also gives me the flexibility to see my changes and gives me more confidence in what I'm writing. A lot of these changes are not compatible with what I see in my editor markdown preview because I'm using a custom CSS for posts.
 

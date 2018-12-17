@@ -38,6 +38,27 @@
     "type": "tech",
     "tldr": "Adding live preview of changes when I'm writing the blog.",
     "title": "Live Preview Blog Edits",
-    "timestamp": 1544608657
+    "timestamp": 1544608657,
+    "dev_to": "https://dev.to/zeerorg/live-preview-blog-edits-2oh1"
+  },
+  {
+    "id": 5,
+    "slug": "rss-feed-azure-functions",
+    "published": false,
+    "filename": "RssFeedNetCoreBlog",
+    "type": "tech",
+    "tldr": "Adding RSS feed to my blog using azure functions.",
+    "title": "Adding RSS with Azure Functions",
+    "timestamp": 1544787924
+  },
+  {
+    "id": 6,
+    "slug": "frontend-caching",
+    "published": true,
+    "filename": "FrontendCaching",
+    "type": "tech",
+    "tldr": "A simple trick to improve site performance with frontend caching",
+    "title": "Caching data in frontend",
+    "timestamp": 1545049130
   }
 ]
