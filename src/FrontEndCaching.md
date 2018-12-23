@@ -18,7 +18,7 @@ We come at our final answer, browser storage api. It is a key value store which 
 
 Browser storage api includes only two operations, `setItem` and `getItem` and as you can probably guess `setItem` stores the value for a given key and `getItem` retrieves the value. We are free from managing the state ourselves and can just provide the key and value for the data to store and retrieve it later.
 
-An example use of this api is demonstrated with a Render prop based component for request fetching.
+An example use of this api is demonstrated by creating a function that invokes a GET request to a url and returns the result as a promise.
 
 ```javascript
 // Without caching

@@ -7,6 +7,10 @@ function Upload-Everything {
   az storage blob upload --container-name metadata --name "main.json" --file ".\main.json" --account-name zeerorgprocessedblog
 }
 
+function Upload-ALLMD {
+  az storage blob upload-batch --destination "https://zeerorgblogmdfiles.blob.core.windows.net/posts" --source .\src
+}
+
 function Upload-Photo ($fileLocation) {
   $fileName = (Get-Item $fileLocation).Name
   echo $fileLocation $fileName

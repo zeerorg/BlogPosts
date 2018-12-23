@@ -8,7 +8,7 @@
 <h2>Browser Storage (the real MVP)</h2>
 <p>We come at our final answer, browser storage api. It is a key value store which is managed by the browser. There are two types of browser storages: local and session. Both of these provide a similar api, but, while the local storage is never cleared, session storage is cleared after the tab is closed. This approach is a lot better than our previous approaches as it's <strong>not as barebones as passing the state around</strong> and <strong>not as complex as learning a new state management framework</strong>.</p>
 <p>Browser storage api includes only two operations, <code>setItem</code> and <code>getItem</code> and as you can probably guess <code>setItem</code> stores the value for a given key and <code>getItem</code> retrieves the value. We are free from managing the state ourselves and can just provide the key and value for the data to store and retrieve it later.</p>
-<p>An example use of this api is demonstrated with a Render prop based component for request fetching.</p>
+<p>An example use of this api is demonstrated by creating a function that invokes a GET request to a url and returns the result as a promise.</p>
 <pre><code class="language-javascript">// Without caching
 function FetchData(url) {
   return fetch(url).then(res =&gt; res.text())
@@ -27,5 +27,5 @@ function FetchData(url) {
 }
 </code></pre>
 <p>We treat the provided url as our key and store the fetched data, so that any subsequent request is fulfilled from the cache. The best part about this approach is that it is easier to understand and doesn't intrude with our frontend code. It is also the best solution for our problem in this case.</p>
-<p><img src="http://localhost:8080/Photos/frontend-caching.png" alt="Basic Architecture" title="Browser storage api" /></p>
+<p><img src="https://zeerorgprocessedblog.blob.core.windows.net/photos/frontend-caching.png" alt="Basic Architecture" title="Browser storage api" /></p>
 <p>Caching is one of the most effective techniques to optimize performance and user experience. Storing request data on the frontend provides speedy navigation and greater control over what is stored by avoiding unnecessary requests to the backend.</p>

@@ -42,23 +42,23 @@
     "dev_to": "https://dev.to/zeerorg/live-preview-blog-edits-2oh1"
   },
   {
-    "id": 5,
-    "slug": "rss-feed-azure-functions",
-    "published": false,
-    "filename": "RssFeedNetCoreBlog",
-    "type": "tech",
-    "tldr": "Adding RSS feed to my blog using azure functions.",
-    "title": "Adding RSS with Azure Functions",
-    "timestamp": 1544787924
-  },
-  {
     "id": 6,
     "slug": "frontend-caching",
     "published": true,
-    "filename": "FrontendCaching",
+    "filename": "FrontEndCaching",
     "type": "tech",
     "tldr": "A simple trick to improve site performance with frontend caching",
     "title": "Caching data in frontend",
     "timestamp": 1545049130
+  },
+  {
+    "id": 7,
+    "slug": "rss-feed-azure-functions",
+    "published": true,
+    "filename": "RssFeedNetCoreBlog",
+    "type": "tech",
+    "tldr": "Adding RSS feed to my blog using .NET Core running on azure functions.",
+    "title": "Adding RSS with .NET Core",
+    "timestamp": 1545534314
   }
 ]

@@ -1,3 +1,44 @@
-<h1>Adding RSS with Azure Functions</h1>
+<h1>Adding RSS with .NET Core</h1>
 <p><em>This is 3rd post in continuation to my major project on this blog.</em></p>
-<p>I admit I've never actually gotten into RSS, setting up a reading list and other things,</p>
+<p>RSS is an old technology and has been fading out of the general ecosystem over the years. With Google shuting down its Google Reader service and Firefox <a href="https://dev.to/sudiukil/firefox-64-drops-rss-support-thoughts-4hbo" title="Firefox 64 drops RSS support">dropping support</a> for RSS in their last 2018 release. I admit I've never actually gotten into RSS, setting up a reading list for different blogs. I am not a frequent blog reader and most of my news source is through apps which meant I never actually had any need for RSS.</p>
+<p>So when I thought of adding RSS to my website it was actually a decision I took after thinking long and hard. I actually went ahead and tried out <a href="https://feedly.com/" title="feedly">Feedly</a> to get an idea of how modern RSS readers work. I can certainly see why a lot of people do like it, which forms the second reason why I thought of going ahead with it. The last reason is purely because I wanted to learn more about RSS and XML in general. This would be my first time implementing XML based schema for data.</p>
+<h2>.NET Core SyndicationFeed</h2>
+<p>The main library that implements helper classes for RSS feed in .NET is <a href="https://docs.microsoft.com/en-us/dotnet/api/system.servicemodel.syndication?view=netcore-2.2" title="System.ServiceModel.Syndication">System.ServiceModel.Syndication</a>. The top level class is <code>SyndicationFeed</code> which can be serialized to not only the latest RSS 2.0 standard but also to Atom 1.0 feed so you can choose whichever you want. You'll need to add the library module through <a href="https://www.nuget.org/packages/System.ServiceModel.Syndication/" title="NuGet Syndication Feed">NuGet</a>.</p>
+<p>First we create a <a href="https://docs.microsoft.com/en-us/dotnet/api/system.servicemodel.syndication.syndicationfeed?view=netcore-2.2" title="Syndication Feed class reference">syndication feed</a> object and add preliminary information to it. Like the title, description and url of the blog. Then we add authors, here we can specify more than one authors.</p>
+<pre><code class="language-csharp">// Top level feed setup
+SyndicationFeed feed = new SyndicationFeed(title, description, url);
+feed.Language = &quot;en-us&quot;;
+feed.LastUpdatedTime = DateTime.Now;
+
+// Adding Authors
+SyndicationPerson sp = new SyndicationPerson(&quot;r.g.gupta@outlok.com&quot;, &quot;Rishabh Gupta&quot;, &quot;https://zeerorg.site/&quot;);
+feed.Authors.Add(sp);
+</code></pre>
+<p>Every <code>&lt;item&gt;</code> element in RSS is represented as an object of <a href="https://docs.microsoft.com/en-us/dotnet/api/system.servicemodel.syndication.syndicationitem?view=netcore-2.2" title="SyndicationItem reference">SyndicationItem</a> class. The items can be added to the feed object.</p>
+<pre><code class="language-csharp">SyndicationItem item = new SyndicationItem(title, description, url);
+item.LastUpdatedTime = DateTimeOffset.FromUnixTimeSeconds(timestamp);
+
+feed.items.Add(item);
+</code></pre>
+<p>One important but optional element inside the <code>&lt;item&gt;</code> element is <code>&lt;content:encoded&gt;</code> element, this is important only for those feeds which also need to provide content of the post along with the updates. But setting this is not directly supported inside the api, so we need to create a custom element and assign it to the item.</p>
+<pre><code class="language-csharp">// The third argument specifies
+XMLDocument doc = new XmlDocument()
+XMLElement content = doc.CreateElement(&quot;content&quot;, &quot;encoded&quot;, &quot;http://purl.org/rss/1.0/modules/content/&quot;);
+content.InnerText = htmlContent;
+item.ElementExtensions.Add(content);
+</code></pre>
+<p>After setting up the feed it can be serialized to RSS 2.0 standard.</p>
+<pre><code class="language-csharp">StringWriter sw = new StringWriter();
+XmlWriter rssWriter = XmlWriter.Create(sw);
+
+// The second false specifies the format for feed.
+// As it can be converted to an older RSS 2.0 format or the newer a10 format.
+Rss20FeedFormatter rssFormatter = new Rss20FeedFormatter(feed, false);
+rssFormatter.WriteTo(rssWriter);
+rssWriter.Close();
+string FeedString = sw.ToString();
+</code></pre>
+<h2>Getting RSS Feed for my blog</h2>
+<p>For my blog all the metadata is stored in a <code>main.json</code> file which is fetched from the blob storage. It's a very rudimentary content management system. The json contains a list of posts as json objects and each item contains data corresponding to that post. One of the data that is stored is <code>filename</code> which specifies the filename that contains the HTML to be fetched from blob container. The RSS feed generator extracts data from JSON object of every post for the <code>&lt;item&gt;</code> elements and sets the html content fetched from the blob container using <code>filename</code> attribute.</p>
+<p>First, I used to trigger this function on every request, but after some tests I realized creating an RSS Feed on the fly was a costly operation, so I am triggering the creation of rss on every change to <code>main.json</code> and saving the results in a blob which is served directly.</p>
+<p>Checkout my rss feed <a href="https://blog.zeerorg.site/rss.xml" title="Rishabh's blog RSS Feed">here</a>.</p>
