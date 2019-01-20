@@ -5,6 +5,7 @@ function Upload-Everything {
   az storage blob upload-batch --destination "https://zeerorgprocessedblog.blob.core.windows.net/photos" --source .\Photos
   az storage blob upload-batch --destination "https://zeerorgblogmdfiles.blob.core.windows.net/posts" --source .\src
   az storage blob upload --container-name metadata --name "main.json" --file ".\main.json" --account-name zeerorgprocessedblog
+  az storage blob upload --container-name metadata --name "series.json" --file ".\series.json" --account-name zeerorgprocessedblog
 }
 
 function Upload-ALLMD {
@@ -17,6 +18,7 @@ function Upload-TestEverything {
   az storage blob upload-batch --connection-string $test_conn --destination "photos" --source .\Photos --content-cache-control "max-age=0, must-revalidate, public"
   az storage blob upload-batch --connection-string $test_conn --destination "posts" --source .\src --content-cache-control "max-age=0, must-revalidate, public"
   az storage blob upload --container-name metadata --name "main.json" --file ".\main.json" --connection-string $test_conn --content-cache-control "max-age=0, must-revalidate, public"
+  az storage blob upload --container-name metadata --name "series.json" --file ".\series.json" --connection-string $test_conn --content-cache-control "max-age=0, must-revalidate, public"
 }
 
 function Upload-Photo ($fileLocation) {
@@ -45,10 +47,11 @@ function Upload-AllHTML {
 
 function Upload-JSON {
   az storage blob upload --container-name metadata --name "main.json" --file ".\main.json" --account-name zeerorgprocessedblog --content-cache-control "max-age=0, must-revalidate, public"
+  az storage blob upload --container-name metadata --name "series.json" --file ".\series.json" --account-name zeerorgprocessedblog --content-cache-control "max-age=0, must-revalidate, public"
 }
 
 function Start-FileServer {
-  http-server . --cors "*" -c-1
+  http-server . --cors "*" -c-1 -p 8081
 }
 
 function Watch-MDCompile {

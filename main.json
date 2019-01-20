@@ -8,7 +8,8 @@
     "tldr": "First major project I tackle is creating this blog.",
     "title": "Blog's Architecture",
     "timestamp": 1544450983,
-    "dev_to": "https://dev.to/zeerorg/my-blogs-architecture-43p7"
+    "dev_to": "https://dev.to/zeerorg/my-blogs-architecture-43p7",
+    "series": "this-blog-series"
   },
   {
     "id": 2,
@@ -39,7 +40,8 @@
     "tldr": "Adding live preview of changes when I'm writing the blog.",
     "title": "Live Preview Blog Edits",
     "timestamp": 1544608657,
-    "dev_to": "https://dev.to/zeerorg/live-preview-blog-edits-2oh1"
+    "dev_to": "https://dev.to/zeerorg/live-preview-blog-edits-2oh1",
+    "series": "this-blog-series"
   },
   {
     "id": 6,
@@ -61,7 +63,8 @@
     "tldr": "Adding RSS feed to my blog using .NET Core running on azure functions.",
     "title": "Adding RSS with .NET Core",
     "timestamp": 1545534314,
-    "dev_to": "https://dev.to/zeerorg/adding-rss-with-net-core-279o"
+    "dev_to": "https://dev.to/zeerorg/adding-rss-with-net-core-279o",
+    "series": "this-blog-series"
   },
   {
     "id": 9,
@@ -73,5 +76,26 @@
     "title": "Sharing your apps with the world for 5$",
     "timestamp": 1546579159,
     "dev_to": "https://dev.to/zeerorg/sharing-your-apps-with-the-world-for-5-1p80"
+  },
+  {
+    "id": 10,
+    "slug": "adding-series-to-blog",
+    "published": true,
+    "filename": "AddingBlogSeries",
+    "type": "tech",
+    "tldr": "Linking blog posts which are part of a series and making an optimization sacrifice for cleaner code base.",
+    "title": "Displaying a Series of Posts",
+    "timestamp": 1547095682,
+    "series": "this-blog-series"
+  },
+  {
+    "id": 11,
+    "slug": "creating-openfaas-connector",
+    "published": true,
+    "filename": "CreatingOpenFaasConnector",
+    "type": "tech",
+    "tldr": "Extending OpenFaas functionality by creating a connector.",
+    "title": "Creating your own OpenFaas Connector",
+    "timestamp": 1547799696
   }
 ]
