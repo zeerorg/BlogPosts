@@ -29,17 +29,20 @@ namespace MarkdownCheck
 
     public void OnExecute()
     {
-      if (!(CommandLine.IsDirectory(SourceDir) && CommandLine.IsDirectory(OutputDir)))
+      if (!CommandLine.IsDirectory(SourceDir))
       {
         Console.Error.WriteLine("Wrong source directory or output directory.");
         Console.WriteLine($"SourceDir: {SourceDir}\nOutputDir: {OutputDir}");
         return;
       }
-      else
+
+      if (!new DirectoryInfo(OutputDir).Exists)
       {
-        Console.WriteLine($"source directory is: {new DirectoryInfo(SourceDir).FullName}");
-        Console.WriteLine($"output directory is: {new DirectoryInfo(OutputDir).FullName}");
+        new DirectoryInfo(OutputDir).Create();
       }
+
+      Console.WriteLine($"source directory is: {new DirectoryInfo(SourceDir).FullName}");
+      Console.WriteLine($"output directory is: {new DirectoryInfo(OutputDir).FullName}");
 
       Action postChange = () => {};
       if (CommandLine.IsFile(JsonFile))
