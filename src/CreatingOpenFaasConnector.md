@@ -1,6 +1,6 @@
 # Creating your own OpenFaas Connector
 
-[OpenFaas](https://www.openfaas.com/) is a serverless platform which can be deployed on Docker Swarm or a kubernetes cluster. A nice introduction to OpenFaas can be found in this [post](https://blog.alexellis.io/quickstart-openfaas-cli/) by Alex, founder of OpenFaas.
+[OpenFaas](https://www.openfaas.com/) is a serverless platform which can be deployed on Docker Swarm or a kubernetes cluster. A nice introduction to OpenFaas can be found in this [post](https://blog.alexellis.io/quickstart-openfaas-cli/) by [Alex](https://twitter.com/alexellisuk), founder of OpenFaas.
 
 This post is going to be about how to create your own OpenFaas connector to add new functionality to your deployment. There are some connectors already being worked on which you can find in the [docs](https://docs.openfaas.com/reference/triggers/).
 
@@ -225,7 +225,7 @@ spec:
 
 - Test these out
 
-If you've pushed the image to docker hub you only need to give a command to swarm or ubernetes to deploy your container.
+If you've pushed the image to docker hub you only need to give a command to swarm or kubernetes to deploy your container.
 
 ```bash
 # Docker swarm
@@ -241,7 +241,7 @@ Deploy a test function to openfaas using the command:
 faas-cli deploy --image=functions/nodeinfo --name=trigger-func --annotation topic=faas-request
 ```
 
-In the OpenFaas portal you'll see the function named `trigger-func` and its invocation count incremeneting every 2 seconds.
+In the OpenFaas portal you'll see the function named `trigger-func` and its invocation count incrementing every 2 seconds.
 
 ## More examples and conclusion
 

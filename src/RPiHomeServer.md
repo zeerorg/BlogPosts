@@ -23,7 +23,7 @@ You can access the password generator on this [link](https://home.zeerorg.site:3
 
 Setting up a reverse proxy server might seem like a bit of a pain but it provides a secure gateway as exposing your home network and your applications on the internet is always a risk. You can also use it to setup SSL if you have a domain. I prefer Nginx simply because it has a lot of guides and is simple to setup (Apache's config scares me). Simple HTTP reverse proxy:
 
-```bash
+```nginx
 server {
   listen 443;
   location / {

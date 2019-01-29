@@ -1,6 +1,6 @@
 # Update the following variables for your own settings:
 function Upload-Everything {
-  'q' | .\Compile\MarkdownCheck.exe
+  .\Compile\MarkdownCheck.exe -s ./src -o ./html
   az storage blob upload-batch --destination "https://zeerorgprocessedblog.blob.core.windows.net/compiled" --source .\html
   az storage blob upload-batch --destination "https://zeerorgprocessedblog.blob.core.windows.net/photos" --source .\Photos
   az storage blob upload-batch --destination "https://zeerorgblogmdfiles.blob.core.windows.net/posts" --source .\src
@@ -34,14 +34,14 @@ function Upload-MDFile ($fileLocation) {
 }
 
 function Upload-HTMLFile ($fileLocation) {
-  'q' | .\Compile\MarkdownCheck.exe
+  .\Compile\MarkdownCheck.exe -s ./src -o ./html
   $fileName = (Get-Item $fileLocation).Name
   echo $fileLocation $fileName
   az storage blob upload --container-name compiled --name $fileName --file $fileLocation --account-name zeerorgprocessedblog --content-cache-control "max-age=0, must-revalidate, public"
 }
 
 function Upload-AllHTML {
-  'q' | .\Compile\MarkdownCheck.exe
+  .\Compile\MarkdownCheck.exe -s ./src -o ./html
   az storage blob upload-batch --destination "https://zeerorgprocessedblog.blob.core.windows.net/compiled" --source .\html --content-cache-control "max-age=0, must-revalidate, public"
 }
 
@@ -55,7 +55,7 @@ function Start-FileServer {
 }
 
 function Watch-MDCompile {
-  .\Compile\MarkdownCheck.exe
+  .\Compile\MarkdownCheck.exe -s ./src -o ./html -w
 }
 
 Export-ModuleMember -Function * -Alias *

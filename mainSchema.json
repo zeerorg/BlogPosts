@@ -1,0 +1,17 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "id": { "type": "number" },
+      "slug": { "type": "string" },
+      "published": { "type": "boolean" },
+      "filename": { "type": "string" },
+      "type": { "type": "string" },
+      "tldr": { "type": "string" },
+      "title": { "type": "string" },
+      "timestamp": { "type": "number" }
+    }
+  }
+}

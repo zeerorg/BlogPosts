@@ -97,5 +97,15 @@
     "tldr": "Extending OpenFaas functionality by creating a connector.",
     "title": "Creating your own OpenFaas Connector",
     "timestamp": 1547799696
+  },
+  {
+    "id": 12,
+    "slug": "react-hooks-dependence",
+    "published": true,
+    "filename": "ChainingHooks",
+    "type": "tech",
+    "tldr": "Pointers and tips for managing multiple state variables and effects that depend on each other.",
+    "title": "React hooks and their dependence on each other",
+    "timestamp": 1548580974
   }
 ]
