@@ -16,6 +16,7 @@ script:
 
 deploy:
   provider: script
-  script: dotnet run --project ./MarkdownCheck/MarkdownCheck/MarkdownCheck.csproj -- -o ./html -s ./src -j ./main.json
+  script: dotnet run --project ./MarkdownCheck/MarkdownCheck/MarkdownCheck.csproj -- -s ./src/ -o ./html/ -j ./main.json -sj ./series.json -p ./Photos/ -u
+  skip_cleanup: true
   on:
     branch: master

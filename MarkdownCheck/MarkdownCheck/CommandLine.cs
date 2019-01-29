@@ -18,6 +18,15 @@ namespace MarkdownCheck
     [Option(LongName="json", ShortName="j", Description="Specify json file")]
     public string JsonFile { get; set; }
 
+    [Option(LongName="seriesjson", ShortName="sj", Description="Specify series json file")]
+    public string SeriesJsonFile { get; set; }
+
+    [Option(LongName="photos", ShortName="p", Description="Specify photos directory")]
+    public string PhotosDir { get; set; }
+
+    [Option(LongName="upload", ShortName="u", Description="Upload built files")]
+    public bool Upload { get; set; }
+
     public void OnExecute()
     {
       if (!(CommandLine.IsDirectory(SourceDir) && CommandLine.IsDirectory(OutputDir)))
@@ -40,6 +49,12 @@ namespace MarkdownCheck
       }
 
       new Compiler(SourceDir, OutputDir, postChange).Start();
+
+      if (Upload)
+      {
+        new AzureBlobUpload(OutputDir, JsonFile, Path.Combine(OutputDir, "rss.xml"), PhotosDir, SeriesJsonFile).Upload();
+      }
+
       if (Watch)
       {
         while (Console.Read() != 'q') ;
