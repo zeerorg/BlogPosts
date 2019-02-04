@@ -12,11 +12,11 @@ install:
 
 script:
   - dotnet build ./MarkdownCheck/MarkdownCheck/MarkdownCheck.csproj
-  - dotnet run --project ./MarkdownCheck/MarkdownCheck/MarkdownCheck.csproj -- -o ./html -s ./src -j ./main.json
+  - dotnet run --project ./MarkdownCheck/MarkdownCheck/MarkdownCheck.csproj -- compile -s ./src -o ./html -j ./main.json
 
 deploy:
   provider: script
-  script: dotnet run --project ./MarkdownCheck/MarkdownCheck/MarkdownCheck.csproj -- -s ./src/ -o ./html/ -j ./main.json -sj ./series.json -p ./Photos/ -u
+  script: dotnet run --project ./MarkdownCheck/MarkdownCheck/MarkdownCheck.csproj -- upload -s ./src -o ./html -j ./main.json -n ./series.json -p ./Photos/
   skip_cleanup: true
   on:
     branch: master

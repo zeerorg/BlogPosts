@@ -41,7 +41,6 @@ namespace MarkdownCheck
       watcher.Changed += new FileSystemEventHandler(OnChange);
 
       watcher.EnableRaisingEvents = true;
-      Console.WriteLine("Built Files. Starting watcher. Press 'q' to stop.");
     }
 
     void OnChange(object obj, FileSystemEventArgs e)

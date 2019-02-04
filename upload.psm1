@@ -41,8 +41,7 @@ function Upload-HTMLFile ($fileLocation) {
 }
 
 function Upload-AllHTML {
-  .\Compile\MarkdownCheck.exe -s ./src -o ./html
-  az storage blob upload-batch --destination "https://zeerorgprocessedblog.blob.core.windows.net/compiled" --source .\html --content-cache-control "max-age=0, must-revalidate, public"
+  .\Compile\MarkdownCheck.exe upload -s ./src -o ./html -j ./main.json -n ./series.json -p ./Photos/
 }
 
 function Upload-JSON {
@@ -50,12 +49,8 @@ function Upload-JSON {
   az storage blob upload --container-name metadata --name "series.json" --file ".\series.json" --account-name zeerorgprocessedblog --content-cache-control "max-age=0, must-revalidate, public"
 }
 
-function Start-FileServer {
-  http-server . --cors "*" -c-1 -p 8081
-}
-
-function Watch-MDCompile {
-  .\Compile\MarkdownCheck.exe -s ./src -o ./html -w
+function Start-Develop {
+  .\Compile\MarkdownCheck.exe develop -s ./src -o ./html -j ./main.json -p .
 }
 
 Export-ModuleMember -Function * -Alias *
