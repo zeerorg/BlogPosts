@@ -50,7 +50,7 @@ function Upload-JSON {
 }
 
 function Start-Develop {
-  .\Compile\MarkdownCheck.exe develop -s ./src -o ./html -j ./main.json -p .
+  .\Compile\MarkdownCheck.exe develop -s ./src -o ./html -j ./main.json -p . -c "cd ../frontend && yarn start"
 }
 
 Export-ModuleMember -Function * -Alias *

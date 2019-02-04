@@ -20,6 +20,9 @@ namespace MarkdownCheck
 
       [Option('j', "json", Required = true, HelpText="Specify json file")]
       public string JsonFile { get; set; }
+
+      [Option('c', "command", Required = true, HelpText="Commad to run with server")]
+      public string Command { get; set; }
     }
 
     [Verb("upload", HelpText = "Upload compiled blog")]
