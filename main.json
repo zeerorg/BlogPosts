@@ -114,8 +114,8 @@
     "published": true,
     "filename": "KubernetesWithWSL",
     "type": "tech",
-    "tldr": "Run kubectl in WSL",
-    "title": "Develop with kubernetes on Docker Desktop with WSL",
+    "tldr": "Develop with kubernetes on Docker Desktop with WSL",
+    "title": "Run kubectl in WSL",
     "timestamp": 1549892032 
   },
   {
