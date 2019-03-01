@@ -126,6 +126,7 @@
     "type": "tech",
     "tldr": "Using existing Dockerfiles for different architectures and automate building Multi-Arch docker images with travisci.",
     "title": "Build Multi-Arch docker images on Travis",
-    "timestamp": 1551435684
+    "timestamp": 1551435684,
+    "dev_to": "https://dev.to/zeerorg/build-multi-arch-docker-images-on-travis-5428"
   }
 ]

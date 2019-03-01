@@ -22,7 +22,7 @@ You can run a program compiled for ARM on amd64 linux machine if it has [`binfmt
 
 [Buildkit](https://github.com/moby/buildkit) is a toolkit for building container images, it is used in docker and many other places and is advertised to be quite fast. It has a client-server architecture and you'll need to start the server and then use the client to interact with it. There is a fantastic [demo](https://asciinema.org/a/GYOx4B88r272HWrLTyFwo156s) on building multi-arch docker images by [Tõnis Tiigi](https://github.com/tonistiigi).
 
-Our process will goes like this, first we'll start the buildkit server as a container process, then we'll copy the `buildctl` binary which the command line frontend for buildkit to our `/usr/bin` directory and then we'll set `BUILDKIT_HOST` environment variable. Finally, before_install block will look like this:
+Our process will goes like this, first we'll start the buildkit server as a container process, then we'll copy the `buildctl` binary which is the command line frontend for buildkit to our `/usr/bin` directory and then we'll set `BUILDKIT_HOST` environment variable. Finally, before_install block will look like this:
 
 ```yaml
 before_install:
@@ -95,7 +95,7 @@ docker manifest annotate someone/my-image:latest someone/my-image:latest-${PLATF
 docker manifest push someone/my-image:latest
 ```
 
-Now you ahve successfully automated the creation and push of multiarch docker images.
+Now you have successfully automated the creation and push of multiarch docker images.
 
 ## Concluding points
 
