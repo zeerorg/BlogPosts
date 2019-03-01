@@ -120,12 +120,12 @@
   },
   {
     "id": 14,
-    "slug": "your-own-faas",
-    "published": false,
-    "filename": "CreateOwnFaas",
+    "slug": "multi-arch-docker-travis",
+    "published": true,
+    "filename": "MultiArchDockerTravis",
     "type": "tech",
-    "tldr": "We'll create a simple Faas backend and a small cli to create our own functions.",
-    "title": "Learn FaaS by creating your own",
-    "timestamp": 1550016000
+    "tldr": "Using existing Dockerfiles for different architectures and automate building Multi-Arch docker images with travisci.",
+    "title": "Build Multi-Arch docker images on Travis",
+    "timestamp": 1551435684
   }
 ]

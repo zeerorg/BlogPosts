@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
+using Microsoft.Net.Http.Headers;
 
 namespace MarkdownCheck
 {
@@ -31,7 +32,11 @@ namespace MarkdownCheck
             {
               FileProvider = new PhysicalFileProvider(
                 new DirectoryInfo(FilePath).FullName
-              )
+              ),
+              OnPrepareResponse = ctx =>
+              {
+                ctx.Context.Response.Headers[HeaderNames.CacheControl] = "max-age=0, must-revalidate, public";
+              }
             });
           })
           .Build()
