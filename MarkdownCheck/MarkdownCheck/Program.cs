@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Threading;
 using System.Threading.Tasks;
 using CommandLine;
 
@@ -20,21 +21,17 @@ namespace MarkdownCheck
 
         static int RunDevelopment(Commands.DevelopmentOptions opts)
         {
-            Parallel.Invoke(new Action[]{
-                () => {
-                    RunCompile(opts.SourceDir, opts.OutputDir, opts.JsonFile);
-                    new StaticFileServer(opts.FileServerPath).Start();
-                },
-                () => {
-                    System.Diagnostics.Process process = new System.Diagnostics.Process();
-                    System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo();
-                    startInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
-                    startInfo.FileName = "cmd.exe";
-                    startInfo.Arguments = "/C " + opts.Command;
-                    process.StartInfo = startInfo;
-                    process.Start();
-                }
-            });
+            System.Diagnostics.Process process = new System.Diagnostics.Process();
+            System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo();
+            startInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
+            startInfo.FileName = "cmd.exe";
+            startInfo.Arguments = "/C " + opts.Command;
+            process.StartInfo = startInfo;
+            process.Start();
+
+            RunCompile(opts.SourceDir, opts.OutputDir, opts.JsonFile);
+            new StaticFileServer(opts.FileServerPath).Start();
+            process.Kill();
             return 0;
         }
 
