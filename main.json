@@ -128,5 +128,15 @@
     "title": "Build Multi-Arch docker images on Travis",
     "timestamp": 1551435684,
     "tweet": "https://twitter.com/zeerorg/status/1101474751552335872"
+  },
+  {
+    "id": 15,
+    "slug": "k3d-kubernetes-dev-env",
+    "published": true,
+    "filename": "IntroducingK3dDev",
+    "type": "tech",
+    "tldr": "Introducing k3d (k3s in docker), a fast and efficient kubernetes development environment.",
+    "title": "k3d - A fast kubernetes dev environment",
+    "timestamp": 1553492479
   }
 ]
