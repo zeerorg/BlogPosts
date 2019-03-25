@@ -137,6 +137,7 @@
     "type": "tech",
     "tldr": "Introducing k3d (k3s in docker), a fast and efficient kubernetes development environment.",
     "title": "k3d - A fast kubernetes dev environment",
-    "timestamp": 1553492479
+    "timestamp": 1553492479,
+    "tweet": "https://twitter.com/zeerorg/status/1110143874436161538"
   }
 ]
